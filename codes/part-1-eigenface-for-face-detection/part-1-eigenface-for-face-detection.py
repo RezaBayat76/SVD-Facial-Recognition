@@ -46,11 +46,11 @@ for image_name in image_names:
     mult_img = np.matmul(subtracted_images[image_name], transposed_images[image_name])
     covariant_image = covariant_image + mult_img/N
 
-# The sixth step: Finding the eigen values and eigen vectors relative to the data base images. 
+# The sixth step: Finding the eigen values and eigen vectors relative to the data base images.
 eigenvalues, eigenvectors = np.linalg.eig(np.array(covariant_image))
 eigenfaces = {}
 
-# Select 6 eigen vectors
+# We use 6 eigen vectors relative to 6 maximum eigen values. eigenvalues and eigenvectors sorted in descending order
 for i in range (0, 6):
     index = 0
     tmp = np.zeros((h, w), np.float)
